@@ -31,6 +31,11 @@ export default function Enteries(props) {
         id={singleData.id}
         item={capitalizeCase}
         time={timestampString}
+        isEditing={singleData.id === props.editedItemId}
+        editedItem={props.editedItem}
+        updateNewTodo={() => props.updateNewTodo(singleData.id)}
+        stopUpdateNewTodo={props.stopUpdateNewTodo}
+        dispatch={props.dispatch} // Pass the dispatch function
       />
     );
   });
