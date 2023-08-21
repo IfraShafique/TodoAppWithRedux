@@ -61,58 +61,57 @@ export default function Items(props) {
   const formattedDate = props.time;
 
   return (
-    <div
-      onClick={() => setIsEditing(true)}
-      className={`select-none cursor-pointer w-full border-b text-sm sm:text-xl rounded bg-[#F685EE] mb-1 sm:mb-2 p-2 sm:p-3 flex justify-between overflow-auto hover:shadow-md ${isEditing ? 'bg-[#F685EE]' : ''}`}
-    >
-      {/* ***Left*** */}
-      {isEditing ? (
-        // Active the editing input field when click on edit button
-        <input
-          type="text"
-          className='text-xs bg-[#F685EE] outline-none sm:text-[1rem] text-black sm:[80%] xl:w-[90%] w-[80%]'
-          value={editedItem}
-          onChange={(e) => setEditedItem(e.target.value)}
-          onKeyDown={handleKeyDown}
-          autoFocus
-        />
-      ) : (
-        <div className='text-xs sm:text-[1rem] text-black sm:[80%] xl:w-[90%] w-[80%]'>
-          <span className='mr-2 text-[#000000] font-semibold'>
-            {/* call the date */}
-            {formattedDate}
-          </span>
-          <span>
-            {/* {editedItem} */}
-            {props.item}
-          </span>
-        </div>
-      )}
-
-      {/* ****Right**** */}
-      <div className='md:mr-4 inline'>
-        {isEditing ? (
-          <span>
-            <i
-              className='fa-regular fa-check-square fa-sm text-[#00C853] hover:text-black'
-              onClick={handleEditSave}
-              
-            ></i>
-          </span>
-        ) : (
-          <span className='bg-[#F685EE]'>
-            <i
-              className='fa-regular fa-pen-to-square fa-sm sm:text-[#D70FC6] text-white hover:text-black'
-              // onClick={handleEditClick}
-            ></i>
-          </span>
-        )}
-        &nbsp;&nbsp;
-        <i
-          className='fa-regular fa-trash-can sm:fa-2xl text-sm sm:text-[#D70FC6] text-white hover:text-black'
-          onClick={handleDelete}
-        ></i>
+  <div
+    onClick={() => setIsEditing(!isEditing)} // Toggle isEditing state on each click
+    className={`select-none cursor-pointer w-full border-b text-sm sm:text-xl rounded bg-[#F685EE] mb-1 sm:mb-2 p-2 sm:p-3 flex justify-between overflow-auto hover:shadow-md ${isEditing ? 'bg-[#F685EE]' : ''}`}
+  >
+    {/* ***Left*** */}
+    {isEditing ? (
+      // Active the editing input field when click on edit button
+      <input
+        type="text"
+        className='text-xs bg-[#F685EE] outline-none sm:text-[1rem] text-black sm:[80%] xl:w-[90%] w-[80%]'
+        value={editedItem}
+        onChange={(e) => setEditedItem(e.target.value)}
+        onKeyDown={handleKeyDown}
+        autoFocus
+      />
+    ) : (
+      <div className='text-xs sm:text-[1rem] text-black sm:[80%] xl:w-[90%] w-[80%]'>
+        <span className='mr-2 text-[#000000] font-semibold'>
+          {/* call the date */}
+          {formattedDate}
+        </span>
+        <span>
+          {/* {editedItem} */}
+          {props.item}
+        </span>
       </div>
+    )}
+
+    {/* ****Right**** */}
+    <div className='md:mr-4 inline'>
+      {isEditing ? (
+        <span>
+          <i
+            className='fa-regular fa-check-square fa-sm text-[#00C853] hover:text-black'
+            onClick={handleEditSave}
+          ></i>
+        </span>
+      ) : (
+        <span className='bg-[#F685EE]'>
+          <i
+            className='fa-regular fa-pen-to-square fa-sm sm:text-[#D70FC6] text-white hover:text-black'
+          ></i>
+        </span>
+      )}
+      &nbsp;&nbsp;
+      <i
+        className='fa-regular fa-trash-can sm:fa-2xl text-sm sm:text-[#D70FC6] text-white hover:text-black'
+        onClick={handleDelete}
+      ></i>
     </div>
-  );
+  </div>
+);
+
 }
